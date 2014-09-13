@@ -1,8 +1,8 @@
 
 public class PayCalculator {
 
-	public int calPay(int i, int j, int k) {
-		return 12;
+	public int calPay(int start, int end, int bedTime) {
+		return (end - start) * 12;
 	}
 
 }

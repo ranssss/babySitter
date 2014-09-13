@@ -25,6 +25,15 @@ public class BabySitterTest {
 		assertEquals(16, calc.calPay(8,10,BEDTIME));
 	}
 
+	@Test
+	public void shouldGetPaid16PerHourAfterMidnight() {
+		paymentHours = new PaymentAfterMidnight();
+		PayCalculator calc = createPaymentCalculator();
+		
+		assertEquals(16, calc.calPay(12,13,BEDTIME));
+		assertEquals(32, calc.calPay(12,14,BEDTIME));
+	}
+	
 	private PayCalculator createPaymentCalculator() {
 		PayCalculator calc = new PayCalculator(paymentHours);
 		return calc;

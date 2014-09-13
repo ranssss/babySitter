@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 
-public class babySitterTest {
+public class BabySitterTest {
 
 	@Test
 	public void shouldGetPaid12PerHourUntilBedtime() {

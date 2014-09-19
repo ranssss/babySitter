@@ -1,16 +1,26 @@
-
 public class PayCalculator {
 
-	
-	
-	private PaymentHours calcPayment ;
+	public int calPay(int startTime, int endTime, int bedTime) {
 
-	public PayCalculator(PaymentHours paymentHours) {
-		calcPayment = paymentHours;
-	}
+		int totalPay = 0;
+		int hourPay = 0;
 
-	public int calPay(int start, int end, int bedTime) {
-		return calcPayment.calculate(start, end, bedTime);
+		for (int time = startTime; time < endTime; time++) {
+
+			if (time < bedTime) {
+				hourPay = 12;
+			} else if (time >= bedTime && time < 12) {
+				hourPay = 8;
+			} else {
+				hourPay = 16;
+			}
+
+			totalPay += hourPay;
+
+			hourPay = 0;
+		}
+		
+		return totalPay;
 	}
 
 }

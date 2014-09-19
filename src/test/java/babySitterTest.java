@@ -11,7 +11,7 @@ public class BabySitterTest {
 
 	@Test
 	public void shouldGetPaid12PerHourUntilBedtime() {
-		paymentHours = new PaymentBeforeBedTime();
+		paymentHours = new PaymentHours();
 		PayCalculator calc = createPaymentCalculator();
 		assertEquals(12, calc.calPay(6,7,BEDTIME));
 		assertEquals(24, calc.calPay(6,8,BEDTIME));
@@ -19,7 +19,7 @@ public class BabySitterTest {
 
 	@Test
 	public void shouldGetPaid8PerHourBetweenBedAndMidnight() {
-		paymentHours = new PaymentAfterBedTimeBeforeMidnight();
+		paymentHours = new PaymentHours();
 		PayCalculator calc = createPaymentCalculator();
 		assertEquals(8, calc.calPay(8,9,BEDTIME));
 		assertEquals(16, calc.calPay(8,10,BEDTIME));
@@ -27,17 +27,24 @@ public class BabySitterTest {
 
 	@Test
 	public void shouldGetPaid16PerHourAfterMidnight() {
-		paymentHours = new PaymentAfterMidnight();
+		paymentHours = new PaymentHours();
 		PayCalculator calc = createPaymentCalculator();
 		
 		assertEquals(16, calc.calPay(12,13,BEDTIME));
 		assertEquals(32, calc.calPay(12,14,BEDTIME));
 	}
 	
-	private PayCalculator createPaymentCalculator() {
-		PayCalculator calc = new PayCalculator(paymentHours);
-		return calc;
+	@Test
+	public void shouldGetPaidCorrectlyWhenTheyStayAllNight() {
+		paymentHours = new PaymentHours();
+		PayCalculator calc = createPaymentCalculator();
+		
+		assertEquals(124, calc.calPay(7,17,BEDTIME));
 	}
 	
+	private PayCalculator createPaymentCalculator() {
+		PayCalculator calc = new PayCalculator();
+		return calc;
+	}
 	
 }

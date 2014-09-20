@@ -11,27 +11,27 @@ public class BabySitterTest {
 	@Test
 	public void shouldGetPaid12PerHourUntilBedtime() {
 		PayCalculator calc = new PayCalculator(6,7,BEDTIME);
-		assertEquals(12, calc.calPay());
+		assertEquals(12, calc.calcPay());
 	}
 
 	@Test
 	public void shouldGetPaid8PerHourBetweenBedAndMidnight() {
 		PayCalculator calc = new PayCalculator(8,10,BEDTIME);
-		assertEquals(16, calc.calPay());
+		assertEquals(16, calc.calcPay());
 	}
 
 	@Test
 	public void shouldGetPaid16PerHourAfterMidnight() {
 		PayCalculator calc = new PayCalculator(12,14,BEDTIME);
 		
-		assertEquals(32, calc.calPay());
+		assertEquals(32, calc.calcPay());
 	}
 	
 	@Test
 	public void shouldGetPaidCorrectlyWhenTheyStayAllNight() {
 		PayCalculator calc = new PayCalculator(7,17,BEDTIME);
 		
-		assertEquals(124, calc.calPay());
+		assertEquals(124, calc.calcPay());
 	}
 	
 }
